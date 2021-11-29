@@ -1,4 +1,4 @@
-#SpaceSegmentation
+# SpaceSegmentation
 
 <WIP>
 
@@ -18,6 +18,6 @@ regions cannot share the same classification. So the largest region is therefore
 a land region, any immediately contained regions will be Sea regions, and regions 
 immediately contained within those Sea regions are Land regions.
 
-##ToDo
+## ToDo
 
  Implement test coverage
