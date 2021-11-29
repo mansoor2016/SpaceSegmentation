@@ -22,7 +22,7 @@ int main()
 		std::cout << number_of_land_regions << std::endl;
 		return 0;
 	}
-	catch (std::exception ex)
+	catch (std::exception& ex)
 	{
 		std::cerr << ex.what() << std::endl;
 	}
