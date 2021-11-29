@@ -37,7 +37,7 @@ namespace geometry
 				auto count_regions(const RegionType region_type) const
 				{
 					std::function<typename Region::index_type(const decltype(classified_regions)&)> counter =
-						[&](const auto& regions_collection) -> Region::index_type
+						[&](const auto& regions_collection) -> typename Region::index_type
 					{
 						typename Region::index_type count{};
 
