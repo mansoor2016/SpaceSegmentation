@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="geomtry">
+      <UniqueIdentifier>{f4cc6bf4-3b71-4936-9e76-5ad5598f587d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ingestion">
+      <UniqueIdentifier>{dac5d7fa-102f-455e-ace4-660822f0610a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geomtry\computation">
+      <UniqueIdentifier>{856a1a72-2ba2-4cad-991b-a12adffb07e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geomtry\computation\segmentation">
+      <UniqueIdentifier>{f74bad9f-709a-4808-9bf8-b9b292fda078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShapeDataIngestion.h">
+      <Filter>ingestion</Filter>
+    </ClInclude>
+    <ClInclude Include="HyperRect.h">
+      <Filter>geomtry</Filter>
+    </ClInclude>
+    <ClInclude Include="RegionType.h">
+      <Filter>geomtry\computation</Filter>
+    </ClInclude>
+    <ClInclude Include="Region.h">
+      <Filter>geomtry\computation</Filter>
+    </ClInclude>
+    <ClInclude Include="RegionSegmentation.h">
+      <Filter>geomtry\computation\segmentation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ExampleInput.txt" />
+  </ItemGroup>
+</Project>
