@@ -29,15 +29,17 @@ namespace geometry
 				typename Region::region_container classified_regions;
 
 			public:
-				RegionSegmentation(std::forward_iterator auto const begin, std::forward_iterator auto const end)
+				RegionSegmentation(
+					std::forward_iterator auto const begin,
+					std::forward_iterator auto const end)
 				{
 					init(begin, end);
 				}
 
 				auto count_regions(const RegionType region_type) const
 				{
-					std::function<typename Region::index_type(const decltype(classified_regions)&)> counter =
-						[&](const auto& regions_collection) -> typename Region::index_type
+					std::function<typename Region::index_type(const decltype(classified_regions)&)> 
+						counter = [&](const auto& regions_collection) -> typename Region::index_type
 					{
 						typename Region::index_type count{};
 
@@ -45,10 +47,9 @@ namespace geometry
 						{
 							count += elem.regionType == region_type ? 1 : 0;
 
-							if (not elem.sub_regions.empty())
-							{
-								count += counter(elem.sub_regions);
-							}
+							count += (not elem.sub_regions.empty()) ? 
+								counter(elem.sub_regions) : 
+								0;
 						}
 
 						return count;
@@ -58,14 +59,15 @@ namespace geometry
 				}
 
 			private:
-				void init(std::forward_iterator auto const begin, std::forward_iterator auto const end)
+				void init(
+					std::forward_iterator auto const begin,
+					std::forward_iterator auto const end)
 				{
 					auto ordered_shapes_desc = std::vector(begin, end);
-					std::sort(ordered_shapes_desc.begin(), ordered_shapes_desc.end(),
-						[](const auto& elem1, const auto& elem2)
-						{
-							return elem1.get_area() > elem2.get_area();
-						});
+					std::sort(
+						ordered_shapes_desc.begin(), 
+						ordered_shapes_desc.end(), 
+						std::greater<>());
 
 					for (auto it = ordered_shapes_desc.begin();
 						it != ordered_shapes_desc.end();
@@ -113,7 +115,6 @@ namespace geometry
 						});
 
 					auto is_in_region = it != end;
-
 					return { is_in_region, is_in_region ? &*it : nullptr };
 				}
 			};

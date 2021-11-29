@@ -1,9 +1,11 @@
 #pragma once
 
 #include "HyperRect.h"
+#include "HyperRectExtensions.h"
 #include "RegionType.h"
 
 #include <vector>
+#include <type_traits>
 
 namespace geometry
 {
@@ -18,25 +20,27 @@ namespace geometry
 			using region_container = std::vector<Region<TFloat, Dimensions>>;
 			using index_type = typename HyperRect::index_type;
 
+			RegionType regionType = RegionType::Unknown;
+			region_container sub_regions;
+
+			const Region* parent = nullptr;
+			const HyperRect* shape = nullptr;
+
 			Region() = delete;
 
-			Region(RegionType region_type, const HyperRect* shape, Region* parent) :
+			Region(RegionType region_type, const HyperRect* shape, const Region* parent) :
 				regionType(region_type), shape(shape), parent(parent)
-			{}
+			{
+				assert(shape);
+			}
 
 			bool is_region_contained(const HyperRect* inner_shape) const
 			{
 				assert(inner_shape != nullptr);
+				const auto hyperRectHelper = 
+					geometry::extensions::CreateHyperRectExtensions(*shape);
 
-				bool is_in_range = true;
-				for (index_type idx{}; idx < Dimensions; ++idx)
-				{
-					is_in_range = is_in_range &&
-						shape->get_min_coord()[idx] <= inner_shape->get_min_coord()[idx] &&
-						inner_shape->get_max_coord()[idx] <= shape->get_max_coord()[idx];
-				}
-
-				return is_in_range;
+				return hyperRectHelper.contains(*inner_shape);
 			}
 
 			inline static RegionType get_region_type_from_parent(Region* parent)
@@ -46,13 +50,6 @@ namespace geometry
 					RegionType::Land :
 					RegionType::Sea;
 			}
-
-			RegionType regionType = RegionType::Unknown;
-			region_container sub_regions;
-
-			Region* parent = nullptr;
-			const HyperRect* shape = nullptr;
 		};
-
 	}
 }

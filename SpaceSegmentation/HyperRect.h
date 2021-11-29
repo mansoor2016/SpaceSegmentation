@@ -20,8 +20,7 @@ namespace geometry
 		using float_type = TFloat;
 		using index_type = decltype(Dimensions);
 
-		static constexpr index_type dimension = Dimensions;
-
+		const index_type dimension = Dimensions;
 
 	private:
 		coordinate min_corner{};
@@ -57,6 +56,11 @@ namespace geometry
 			return *this;
 		}
 
+		friend auto operator> (const HyperRect& lhs, const HyperRect& rhs)
+		{
+			return lhs.area > rhs.area;
+		}
+
 		const auto& get_min_coord() const
 		{
 			return min_corner;
@@ -89,7 +93,6 @@ namespace geometry
 		}
 
 	private:
-
 		TFloat compute_area() const
 		{
 			return std::transform_reduce(

@@ -12,8 +12,8 @@ int main()
 	try
 	{
 		using Box = geometry::HyperRect<float, 2>;
-		using BoxIngester = ingestion::ShapeDataIngestion<Box::float_type, Box::dimension>;
-		using RegionSegmentation = geometry::computation::segmentation::RegionSegmentation<Box::float_type, Box::dimension>;
+		using BoxIngester = ingestion::ShapeDataIngestion<Box::float_type, 2>;
+		using RegionSegmentation = geometry::computation::segmentation::RegionSegmentation<Box::float_type, 2>;
 
 		const auto boxes = BoxIngester().ReadLines();
 		const auto number_of_land_regions = RegionSegmentation(boxes.cbegin(), boxes.cend()).

@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HyperRect.h" />
+    <ClInclude Include="HyperRectExtensions.h" />
     <ClInclude Include="Region.h" />
     <ClInclude Include="RegionSegmentation.h" />
     <ClInclude Include="RegionType.h" />

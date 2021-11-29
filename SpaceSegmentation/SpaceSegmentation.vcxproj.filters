@@ -39,6 +39,9 @@
     <ClInclude Include="RegionSegmentation.h">
       <Filter>geomtry\computation\segmentation</Filter>
     </ClInclude>
+    <ClInclude Include="HyperRectExtensions.h">
+      <Filter>geomtry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ExampleInput.txt" />
