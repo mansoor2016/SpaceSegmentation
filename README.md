@@ -5,8 +5,11 @@
 Reads an input file formatted as:
 
 <no. of lines>
-<min coord> <max coord>
-<min coord> <max coord>
+
+\<min coord>  \<max coord>
+
+\<min coord>  \<max coord>
+
 ....
 
 which defines a set of non-overlaping axis aligned boxes, see ExampleInputs.txt.
