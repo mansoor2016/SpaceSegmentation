@@ -83,4 +83,6 @@ namespace ingestion
 			return ret_val;
 		}
 	};
+
+	using BoxIngester = ShapeDataIngestion<geometry::Box::float_type, 2>;
 }

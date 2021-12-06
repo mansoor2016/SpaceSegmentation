@@ -118,6 +118,9 @@ namespace geometry
 					return { is_in_region, is_in_region ? &*it : nullptr };
 				}
 			};
+
+
+			using RegionSegmenter = RegionSegmentation<geometry::Box::float_type, 2>;
 		}
 	}
 }

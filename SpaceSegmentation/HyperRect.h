@@ -113,4 +113,6 @@ namespace geometry
 			out << "\n";
 		}
 	};
+
+	using Box = HyperRect<float, 2>;
 }

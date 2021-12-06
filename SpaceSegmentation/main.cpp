@@ -7,19 +7,20 @@
 #include <exception>
 #include <iostream>
 
+using namespace ingestion;
+using namespace geometry::computation;
+
 int main()
 {
 	try
 	{
-		using Box = geometry::HyperRect<float, 2>;
-		using BoxIngester = ingestion::ShapeDataIngestion<Box::float_type, 2>;
-		using RegionSegmentation = geometry::computation::segmentation::RegionSegmentation<Box::float_type, 2>;
-
 		const auto boxes = BoxIngester().ReadLines();
-		const auto number_of_land_regions = RegionSegmentation(boxes.cbegin(), boxes.cend()).
-			count_regions(geometry::computation::RegionType::Land);
+		const auto number_of_land_regions = 
+			segmentation::RegionSegmenter(boxes.cbegin(), boxes.cend()).
+				count_regions(geometry::computation::RegionType::Land);
 
 		std::cout << number_of_land_regions << std::endl;
+
 		return 0;
 	}
 	catch (std::exception& ex)
